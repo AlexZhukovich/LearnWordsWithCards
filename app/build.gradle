@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -14,6 +12,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
     }
     buildTypes {
         release {
@@ -31,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.core:core-ktx:$core_version"
@@ -41,6 +46,15 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$navigation_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    implementation "androidx.compose:compose-compiler:$compose_version"
+    implementation "androidx.compose:compose-runtime:$compose_version"
+    implementation "androidx.ui:ui-layout:$compose_version"
+    implementation "androidx.ui:ui-framework:$compose_version"
+    implementation "androidx.ui:ui-layout:$compose_version"
+    implementation "androidx.ui:ui-foundation:$compose_version"
+    implementation "androidx.ui:ui-animation:$compose_version"
+    implementation "androidx.ui:ui-tooling:$compose_version"
+    implementation "androidx.ui:ui-material:$compose_version"
 
     testImplementation "junit:junit:$junit_version"
 
