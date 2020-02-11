@@ -1,4 +1,4 @@
-package com.alexzh.learnwordswithcards.ui.dashboard
+package com.alexzh.learnwordswithcards.ui.words
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.alexzh.learnwordswithcards.R
 
-class DashboardFragment : Fragment() {
+class WordsFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var wordsViewModel: WordsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(this, Observer {
+        wordsViewModel =
+            ViewModelProviders.of(this).get(WordsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_words, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        wordsViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root
