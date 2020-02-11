@@ -9,21 +9,20 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.alexzh.learnwordswithcards.R
+import org.koin.android.ext.android.inject
 
 class WordsFragment : Fragment() {
 
-    private lateinit var wordsViewModel: WordsViewModel
+    private val viewModel: WordsViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wordsViewModel =
-            ViewModelProviders.of(this).get(WordsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_words, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        wordsViewModel.text.observe(this, Observer {
+        viewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
